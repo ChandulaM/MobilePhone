@@ -1,90 +1,83 @@
 package mobilephone.services;
 
-import java.lang.invoke.StringConcatFactory;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+public class ContactServiceImpl implements ContactService {
 
-public class ContactServiceImpl implements ContactService{
-	
 	Scanner sc = new Scanner(System.in);
-	
 
 	@Override
 	public Map<String, String> addContact() {
-		
-		String decision = "Y"; 
+
+		String decision = "Y";
 		Map<String, String> contactList = new HashMap<String, String>();
-		
+
 		System.out.println("\n====================ADD CONTACTS====================");
-		
+
 		System.out.print("Enter the contact Name : ");
 		String name = sc.next();
 		System.out.print("Enter the contact Number : ");
 		String number = sc.next();
-		
-		while(decision.equalsIgnoreCase("Y")) {	
+
+		while (decision.equalsIgnoreCase("Y")) {
 			contactList.put(number, name);
 			System.out.println("=========================================");
-			System.out.print("Do you want to add one more ? (Y/N)");	
+			System.out.print("Do you want to add one more ? (Y/N)");
 			decision = sc.next();
 			System.out.println("=========================================");
-			if(decision.equalsIgnoreCase("Y")) {
+			if (decision.equalsIgnoreCase("Y")) {
 				System.out.print("Enter the contact Name : ");
-				 name = sc.next();
+				name = sc.next();
 				System.out.print("Enter the contact Number : ");
-				 number = sc.next();
-			}else if(decision.equalsIgnoreCase("N")){
+				number = sc.next();
+			} else if (decision.equalsIgnoreCase("N")) {
 				break;
-			}else {
+			} else {
 				System.out.println("Enter only 'Y' or 'N'!");
 				continue;
 			}
 		}
 		System.out.println(contactList);
-		return contactList;	
+		return contactList;
 	}
-	
-	
-	
+
 	public void searchContact(HashMap<String, String> contactList) {
 		String dis;
 		System.out.println("\n====================SEARCH CONTACTS====================");
 		System.out.print("Enter the Name : ");
 		String name = sc.nextLine();
-		
+
 		do {
-			for(java.util.Map.Entry<String, String> entry : contactList.entrySet()) {
-			    if (entry.getValue().equals(name)) {
-			           System.out.println((entry.getValue()+" : "+entry.getKey()));
-			    }
-			 }
-			
+			for (java.util.Map.Entry<String, String> entry : contactList.entrySet()) {
+				if (entry.getValue().equals(name)) {
+					System.out.println((entry.getValue() + " : " + entry.getKey()));
+				}
+			}
+
 			System.out.println("=========================================");
 			System.out.print("Do you want to continue? (Y/N)");
 			dis = sc.nextLine();
 			System.out.println("=========================================");
-			if(dis.equalsIgnoreCase("Y")) {
+			if (dis.equalsIgnoreCase("Y")) {
 				System.out.print("Enter the Name : ");
 				name = sc.nextLine();
-			}else if(dis.equalsIgnoreCase("N")){
+			} else if (dis.equalsIgnoreCase("N")) {
 				break;
-			}else {
+			} else {
 				System.out.println("Enter only 'Y' or 'N'!");
 				continue;
 			}
-		}while(dis.equalsIgnoreCase("Y"));
-		
+		} while (dis.equalsIgnoreCase("Y"));
+
 //		if(contactList.containsValue(name)) {
 //			System.out.println(name + " : " + contactList.get(name));
 //		}else {
 //			System.out.println("Contact Not Found!!!");
 //		}
-		
+
 	}
-
-
 
 	@Override
 	public void removeContanct(HashMap<String, String> contactList) {
@@ -93,13 +86,13 @@ public class ContactServiceImpl implements ContactService{
 		System.out.println("\n====================DELETE CONTACTS====================");
 		System.out.print("Enter the Name to Delete : ");
 		String name = sc.nextLine();
-		
+
 		do {
-			for(java.util.Map.Entry<String, String> entry : contactList.entrySet()) {
-			    if (entry.getValue().equals(name)) {
-			           val = entry.getKey();           
-			    }
-			 }
+			for (java.util.Map.Entry<String, String> entry : contactList.entrySet()) {
+				if (entry.getValue().equals(name)) {
+					val = entry.getKey();
+				}
+			}
 			contactList.remove(val);
 			System.out.println("Removed Successfully");
 			System.out.println(contactList);
@@ -107,20 +100,18 @@ public class ContactServiceImpl implements ContactService{
 			System.out.print("Do you want to continue? (Y/N)");
 			dis = sc.nextLine();
 			System.out.println("=========================================");
-			if(dis.equalsIgnoreCase("Y")) {
+			if (dis.equalsIgnoreCase("Y")) {
 				System.out.print("Enter the Name to Delete : ");
 				name = sc.nextLine();
-			}else if(dis.equalsIgnoreCase("N")){
+			} else if (dis.equalsIgnoreCase("N")) {
 				break;
-			}else {
+			} else {
 				System.out.println("Enter only 'Y' or 'N'!");
 				continue;
 			}
-		}while(dis.equalsIgnoreCase("Y"));
-		
+		} while (dis.equalsIgnoreCase("Y"));
+
 	}
-
-
 
 	@Override
 	public void updateContact(HashMap<String, String> contactList) {
@@ -131,13 +122,13 @@ public class ContactServiceImpl implements ContactService{
 		String name = sc.nextLine();
 		System.out.print("Enter the New Number : ");
 		String num = sc.nextLine();
-		
+
 		do {
-			for(java.util.Map.Entry<String, String> entry : contactList.entrySet()) {
-			    if (entry.getValue().equals(name)) {
-			    	 val = entry.getKey();                    
-			    }
-			 }
+			for (java.util.Map.Entry<String, String> entry : contactList.entrySet()) {
+				if (entry.getValue().equals(name)) {
+					val = entry.getKey();
+				}
+			}
 			contactList.remove(val);
 			contactList.put(num, name);
 			System.out.println("Updated Successfully");
@@ -146,26 +137,19 @@ public class ContactServiceImpl implements ContactService{
 			System.out.print("Do you want to continue? (Y/N)");
 			dis = sc.nextLine();
 			System.out.println("=========================================");
-			if(dis.equalsIgnoreCase("Y")) {
+			if (dis.equalsIgnoreCase("Y")) {
 				System.out.print("Enter the Name : ");
-				 name = sc.nextLine();
+				name = sc.nextLine();
 				System.out.print("Enter the New Number : ");
-				 num = sc.nextLine();
-			}else if(dis.equalsIgnoreCase("N")){
+				num = sc.nextLine();
+			} else if (dis.equalsIgnoreCase("N")) {
 				break;
-			}else {
+			} else {
 				System.out.println("Enter only 'Y' or 'N'!");
 				continue;
 			}
-		}while(dis.equalsIgnoreCase("Y"));
-		
-	}
+		} while (dis.equalsIgnoreCase("Y"));
 
-	
-	
-	
-	
-	
-	
+	}
 
 }
