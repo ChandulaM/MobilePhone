@@ -8,7 +8,8 @@ public class ContactServiceImpl implements ContactService {
 
 	Scanner sc = new Scanner(System.in);
 
-	@Override
+	
+	//Method for adding contacts.
 	public Map<String, String> addContact() {
 
 		String decision = "Y";
@@ -42,12 +43,15 @@ public class ContactServiceImpl implements ContactService {
 		System.out.println(contactList);
 		return contactList;
 	}
+	
+	
 
+	//Method for searching contacts
 	public void searchContact(HashMap<String, String> contactList) {
 		String dis;
 		System.out.println("\n====================SEARCH CONTACTS====================");
 		System.out.print("Enter the Name : ");
-		String name = sc.nextLine();
+		String name = sc.next();
 
 		do {
 			for (java.util.Map.Entry<String, String> entry : contactList.entrySet()) {
@@ -58,11 +62,11 @@ public class ContactServiceImpl implements ContactService {
 
 			System.out.println("=========================================");
 			System.out.print("Do you want to continue? (Y/N)");
-			dis = sc.nextLine();
+			dis = sc.next();
 			System.out.println("=========================================");
 			if (dis.equalsIgnoreCase("Y")) {
 				System.out.print("Enter the Name : ");
-				name = sc.nextLine();
+				name = sc.next();
 			} else if (dis.equalsIgnoreCase("N")) {
 				break;
 			} else {
@@ -78,14 +82,17 @@ public class ContactServiceImpl implements ContactService {
 //		}
 
 	}
+	
+	
 
-	@Override
+
+	//Method for removing contacts.
 	public void removeContanct(HashMap<String, String> contactList) {
 		String dis;
 		String val = "";
 		System.out.println("\n====================DELETE CONTACTS====================");
 		System.out.print("Enter the Name to Delete : ");
-		String name = sc.nextLine();
+		String name = sc.next();
 
 		do {
 			for (java.util.Map.Entry<String, String> entry : contactList.entrySet()) {
@@ -98,11 +105,11 @@ public class ContactServiceImpl implements ContactService {
 			System.out.println(contactList);
 			System.out.println("=========================================");
 			System.out.print("Do you want to continue? (Y/N)");
-			dis = sc.nextLine();
+			dis = sc.next();
 			System.out.println("=========================================");
 			if (dis.equalsIgnoreCase("Y")) {
 				System.out.print("Enter the Name to Delete : ");
-				name = sc.nextLine();
+				name = sc.next();
 			} else if (dis.equalsIgnoreCase("N")) {
 				break;
 			} else {
@@ -112,16 +119,18 @@ public class ContactServiceImpl implements ContactService {
 		} while (dis.equalsIgnoreCase("Y"));
 
 	}
+	
+	
 
-	@Override
+	//Method for updating contacts.
 	public void updateContact(HashMap<String, String> contactList) {
 		String dis;
 		String val = "";
 		System.out.println("\n====================UPDATE CONTACTS====================");
 		System.out.print("Enter the Name : ");
-		String name = sc.nextLine();
+		String name = sc.next();
 		System.out.print("Enter the New Number : ");
-		String num = sc.nextLine();
+		String num = sc.next();
 
 		do {
 			for (java.util.Map.Entry<String, String> entry : contactList.entrySet()) {
@@ -135,13 +144,13 @@ public class ContactServiceImpl implements ContactService {
 			System.out.println(contactList);
 			System.out.println("=========================================");
 			System.out.print("Do you want to continue? (Y/N)");
-			dis = sc.nextLine();
+			dis = sc.next();
 			System.out.println("=========================================");
 			if (dis.equalsIgnoreCase("Y")) {
 				System.out.print("Enter the Name : ");
-				name = sc.nextLine();
+				name = sc.next();
 				System.out.print("Enter the New Number : ");
-				num = sc.nextLine();
+				num = sc.next();
 			} else if (dis.equalsIgnoreCase("N")) {
 				break;
 			} else {

@@ -13,7 +13,7 @@ public class Main {
 		String dis2;
 		do {
 			System.out.println("\n====================CHOOSE AN OPTION====================");
-			System.out.println("1.Add Contact.\n2.Search Contact.\n3.Update Contact\n4.Remove Contact.");
+			System.out.println("1.Add Contact.\n2.Search Contact.\n3.Update Contact.\n4.Remove Contact.");
 			System.out.print("====================\nYour Option(1/2/3/4)? : ");
 			int dis = scanner.nextInt();
 			System.out.println("====================");
@@ -41,6 +41,7 @@ public class Main {
 			if (dis2.equalsIgnoreCase("Y")) {
 				continue;
 			} else if (dis2.equalsIgnoreCase("N")) {
+				System.out.println("...Process Ended...");
 				break;
 			} else {
 				System.out.println("Enter only 'Y' or 'N'!");
